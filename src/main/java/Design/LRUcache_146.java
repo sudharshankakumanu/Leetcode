@@ -1,4 +1,4 @@
-package com.amazon;
+package Design;
 
 public class LRUcache_146 {
 

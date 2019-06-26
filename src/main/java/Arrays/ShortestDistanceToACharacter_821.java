@@ -1,4 +1,4 @@
-package com.atlassian;
+package Arrays;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.adobe;
+package Arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;

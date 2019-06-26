@@ -1,4 +1,4 @@
-package com.apple;
+package Recursion;
 
 public class Friend_Circles_547 {
     int count = 0;

@@ -1,4 +1,4 @@
-package com.apple;
+package Strings;
 
 import java.util.HashMap;
 import java.util.Map;

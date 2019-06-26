@@ -1,4 +1,4 @@
-package com.adobe;
+package LinkedLists;
 
 import java.util.HashMap;
 import java.util.Map;

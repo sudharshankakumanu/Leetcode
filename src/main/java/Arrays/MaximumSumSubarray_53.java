@@ -1,4 +1,4 @@
-package com.atlassian;
+package Arrays;
 
 public class MaximumSumSubarray_53 {
 

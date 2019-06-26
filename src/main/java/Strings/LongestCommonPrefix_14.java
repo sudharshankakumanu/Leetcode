@@ -1,4 +1,4 @@
-package com.adobe;
+package Strings;
 
 import javax.xml.transform.Source;
 import java.util.Arrays;

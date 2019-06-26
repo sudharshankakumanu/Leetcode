@@ -1,4 +1,4 @@
-package com.adobe;
+package Arrays;
 
 public class ProductOfArrayExceptSelf_238 {
 
