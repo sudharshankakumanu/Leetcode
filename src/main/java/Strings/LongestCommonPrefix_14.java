@@ -1,8 +1,5 @@
 package Strings;
 
-import javax.xml.transform.Source;
-import java.util.Arrays;
-
 public class LongestCommonPrefix_14 {
 
     public static void main(String[] args) {

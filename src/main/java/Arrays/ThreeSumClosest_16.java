@@ -1,5 +1,7 @@
 package Arrays;
 
+import sun.awt.image.IntegerComponentRaster;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,12 +12,12 @@ public class ThreeSumClosest_16 {
 
     }
 
-    public List<List<Integer>> threeSumClosest(int[] nums) {
-
-        List<List<Integer>> result = new ArrayList<>();
-        if (nums == null || nums.length < 3) return result;
+    public static int threeSumClosest(int[] nums, int target) {
 
         Arrays.sort(nums);
+
+        int mindiff = Integer.MAX_VALUE;
+        int closest = Integer.MAX_VALUE;
 
         for (int i = 0; i < nums.length - 2; i++) {
 
@@ -24,44 +26,25 @@ public class ThreeSumClosest_16 {
 
             while (lo < hi) {
 
-                    if (nums[lo] + nums[hi] + nums[i] == 0) {
-                        result.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
-                        while (lo < hi && nums[lo] == nums[lo + 1]) lo++;
-                        while (lo < hi && nums[hi] == nums[hi - 1]) hi--;
-                        lo++;
-                        hi--;
-                    } else if (nums[lo] + nums[hi] + nums[i] < 0) {
-                        lo++;
-                    } else {
-                        hi--;
+                int sum = nums[lo] + nums[hi] + nums[i];
+                if (sum == target) {
+                    return target;
+                } else if (sum < target) {
+                    if (target - sum < mindiff) {
+                        mindiff = target - sum;
+                        closest = sum;
                     }
+                    lo++;
+                } else {
+                    if (sum - target < mindiff) {
+                        mindiff = sum - target;
+                        closest = sum;
+                    }
+                    hi--;
+                }
             }
-
-
-
-
-//            if(i == 0 || nums[i-1] != nums[i]) {
-//                int lo = i + 1;
-//                int hi = nums.length - 1;
-//                while (lo < hi) {
-//
-//                    if (nums[lo] + nums[hi] + nums[i] == 0) {
-//                        result.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
-//                        while (lo < hi && nums[lo] == nums[lo + 1]) lo++;
-//                        while (lo < hi && nums[hi] == nums[hi - 1]) hi--;
-//                        lo++;
-//                        hi--;
-//                    } else if (nums[lo] + nums[hi] + nums[i] < 0) {
-//                        lo++;
-//                    } else {
-//                        hi--;
-//                    }
-//                }
-//
-//
-//            }
         }
 
-        return result;
+        return closest;
     }
 }
