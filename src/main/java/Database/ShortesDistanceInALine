@@ -1,0 +1,2 @@
+//https://leetcode.com/problems/shortest-distance-in-a-line/
+SELECT MIN(ABS(a.x - b.x)) AS shortest FROM Point a JOIN Point b ON a.x <> b.x;
