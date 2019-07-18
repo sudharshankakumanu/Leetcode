@@ -1,21 +1,18 @@
 package BackTracking;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class LetterCombinationOfPhoneNumber {
 
     public static void main(String[] args) {
-        System.out.println(letterCombinations("23"));
+        System.out.println(letterCombinationsRecursive("23"));
 
     }
 
     /*
     simple approach is to add characters to FIFO queue, remove elements one by one and add next possible char and add them back to queue
      */
-    public static List<String> letterCombinations(String digits) {
+    public static Queue<String> letterCombinations(String digits) {
 
         HashMap<Character, String> map = new HashMap<>();
         map.put('2', "abc");
@@ -27,7 +24,7 @@ public class LetterCombinationOfPhoneNumber {
         map.put('8', "tuv");
         map.put('9', "wxyz");
 
-        LinkedList<String> ans = new LinkedList<>();
+        Queue<String> ans = new LinkedList<>();
         if (digits.isEmpty()) return ans;
 
         ans.add("");
@@ -56,26 +53,26 @@ public class LetterCombinationOfPhoneNumber {
         map.put('9', "wxyz");
 
         List<String> ans = new ArrayList<>();
-        ans.add("");
-
         if (digits.isEmpty()) return ans;
 
-        helper(digits.charAt(0), ans, map);
+        helper(digits.toCharArray(), "" ,ans, map ,0);
 
         return ans;
 
     }
 
-    private static void helper(char charAt, List<String> ans, HashMap<Character, String> map) {
+    private static void helper(char[] digits, String res, List<String> ans, HashMap<Character, String> map, int index) {
 
-//        if()
-//
-//        char[] arr = map.get(charAt).toCharArray();
-//        for(char c : arr){
-//
-//            for(String s : ans){
-//                s = s + c;
-//            }
+        if (index == digits.length) {
+            ans.add(new String(res));
+            return;
+        }
+
+        char[] arr = map.get(digits[index]).toCharArray();
+        for (char c : arr) {
+
+            helper(digits, res + c, ans, map, index + 1);
+        }
     }
 }
 
