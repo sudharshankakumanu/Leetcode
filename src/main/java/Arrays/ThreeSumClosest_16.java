@@ -1,6 +1,5 @@
 package Arrays;
 
-import sun.awt.image.IntegerComponentRaster;
 
 import java.util.ArrayList;
 import java.util.Arrays;
