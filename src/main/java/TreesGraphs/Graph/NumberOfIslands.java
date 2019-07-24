@@ -34,8 +34,6 @@ public class NumberOfIslands {
 
     public static void numIslandsHelper(char[][] grid , int i , int j) {
 
-
-
         if(i < 0 || j < 0 || i > n-1 || j > m-1 || grid[i][j] != 0) return ;
 
         grid[i][j] = 0;
