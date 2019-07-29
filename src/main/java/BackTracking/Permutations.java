@@ -31,13 +31,19 @@ public class Permutations {
             res.add(new ArrayList<>(subList));
         }
 
-        for(int i = 0; i < nums.length; i++){
+        else{
 
-            if(subList.contains(nums[i])) continue; // if element already added to subList, skip it
-            subList.add(nums[i]);
-            helper(res, nums, subList);
-            subList.remove(subList.size() - 1);
+            for(int i = 0; i < nums.length; i++){
+
+                if(subList.contains(nums[i])) continue; // if element already added to subList, skip it
+                subList.add(nums[i]);
+                helper(res, nums, subList);
+                subList.remove(subList.size() - 1);
+
+            }
         }
+
+
     }
 
 
