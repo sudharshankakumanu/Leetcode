@@ -22,6 +22,9 @@ public class WordLadder {
 
                 charArray[i] = c;
 
+                String s = String.valueOf(charArray);
+                if(s.equals(endWord))  return count+1;
+
             }
         }
 
