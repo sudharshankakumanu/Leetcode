@@ -2,6 +2,8 @@ package LinkedLists;
 
 import Util.ListNode;
 
+import java.util.List;
+
 public class ReverseNodesInKGroup {
 
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class ReverseNodesInKGroup {
         l1.next.next.next.next = new ListNode(5);
         ListNode l2 = l1.next.next.next.next.next = new ListNode(6);
 
-        ListNode node = reverseRegular(l1,l2);
+        ListNode node = reverseKGroupRecursive(l1,3);
 
         while(node != null){
             System.out.println(node.val);
@@ -23,9 +25,40 @@ public class ReverseNodesInKGroup {
 
     }
 
-    public void reverseKGroup(ListNode head, int k) {
+    public static ListNode reverseKGroupRecursive(ListNode head, int k) {
+        if(head == null || head.next == null || k < 2) return head;
 
-//        if(head == null || head.next == null || k ==1) return head;
+        ListNode curr = head;
+        int count = 0;
+
+        while(curr != null && count < k){ //curr reaches k+1th node
+            curr = curr.next;
+            count++;
+        }
+        // if we had reached null beforereaching count = k then we can just return head;
+        if(count == k) {
+
+            curr = reverseKGroupRecursive(curr , k);
+
+            // now reverse the first K elements
+            while(count-- > 0){
+
+                ListNode temp = head.next;
+                head.next = curr;
+                curr = head;
+                head = temp;
+            }
+
+            return curr;
+        }
+
+        return head;
+
+    }
+
+//    public ListNode reverseKGroup(ListNode head, int k) {
+//
+//       if(head == null || head.next == null || k ==1) return head;
 //
 //        ListNode dummy = new ListNode(-1);
 //        dummy.next = head;
@@ -38,32 +71,32 @@ public class ReverseNodesInKGroup {
 //
 //            if(count % k == 0) {
 //
+//                ListNode next = head.next;
+//                begin = reverseRegular(begin, head);
+//                head = next;
 //
 //            }
-//            if(cur == null) return temp.next;
-//            cur = cur.next;
+//            else {
+//                head = head.next;
+//            }
 //        }
-    }
-
-    public static ListNode reverseRegular(ListNode begin, ListNode end){
-
-        if(begin == end) return begin;
-
-        ListNode dummy = new ListNode(-1);
-        dummy.next = begin;
-        ListNode pre = dummy;
-        ListNode cur = dummy.next;
-
-        while(cur != end){
-
-            ListNode temp = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = temp;
-
-        }
-        cur.next = pre;
-        dummy = null;
-        return cur;
-    }
+//    }
+//
+//    public static ListNode reverseRegular(ListNode begin, ListNode end){
+//
+//        if(begin == end) return begin;
+//
+//        ListNode pre = null;
+//        ListNode next = null;
+//
+//        while(begin != null && begin != end.next){
+//
+//            next = begin.next;
+//            begin.next = pre;
+//            pre = begin;
+//            begin = next;
+//        }
+//
+//        return end;
+//    }
 }
